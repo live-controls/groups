@@ -20,6 +20,14 @@ None
 composer require live-controls/groups
 ```
 
+## Setup
+#### Set administrator groups (default is group with key 'admin')
+1) Run in console:
+```
+php artisan vendor:publish --tag="livecontrols.groups.config"
+```
+2) Open /config/livecontrols_groups.php
+3) Change line "usergroups_admins" to an array of UserGroup keys
 
 ## Usage
 Todo
