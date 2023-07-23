@@ -1,0 +1,29 @@
+{
+    "name": "live-controls/groups",
+    "description": "Groups library for live-controls",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "LiveControls\\Groups\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Roman Wanner",
+            "email": "60240491+daredloco@users.noreply.github.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LiveControls\\Groups\\GroupsServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7"
+    },
+    "require": {
+        "live-controls/permissions": "^1.0"
+    }
+}
