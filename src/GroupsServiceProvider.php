@@ -2,13 +2,13 @@
 
 namespace LiveControls\Groups;
 
-use Helvetiapps\LiveControls\Console\UserGroups\AddUserGroupCommand;
-use Helvetiapps\LiveControls\Console\UserGroups\AddUserToGroupCommand;
-use Helvetiapps\LiveControls\Console\UserGroups\RemoveUserFromGroupCommand;
-use Helvetiapps\LiveControls\Http\Middleware\UserGroups\CheckUserGroup;
+use LiveControls\Groups\Console\AddUserGroupCommand;
+use LiveControls\Groups\Console\AddUserToGroupCommand;
+use LiveControls\Groups\Console\RemoveUserFromGroupCommand;
+use LiveControls\Groups\Http\Middleware\CheckUserGroup;
 use Illuminate\Support\ServiceProvider;
 
-class LiveControlsServiceProvider extends ServiceProvider
+class GroupsServiceProvider extends ServiceProvider
 {
   public function register()
   {
