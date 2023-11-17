@@ -14,12 +14,12 @@ class CreateUserGroupsCommand extends Command
     public function handle()
     {
         $this->info("Deletes all usergroups");
-        UserGroupHandler::clear();
-        $this->info("UserGroups deleted");
+        $deletedCount = UserGroupHandler::clear();
+        $this->info($deletedCount." UserGroups deleted");
         $this->info("Reading configuration file");
-        $groups = config('livecontrols.usergroups_to_generate', []);
+        $groups = config('livecontrols_groups.usergroups_to_generate', []);
         $this->info("Generating UserGroups");
-        UserGroupHandler::create($groups);
-        $this->info("UserGroups generated!");
+        $ugCol = UserGroupHandler::create($groups);
+        $this->info(count($ugCol)." UserGroups generated!");
     }
 }
