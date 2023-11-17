@@ -52,12 +52,7 @@ class UserGroupHandler{
                 $color = array_key_exists("color", $group) ? $group["color"] : null;
                 $description = array_key_exists("description", $group) ? $group["description"] : null;
             }
-            $newGroup = UserGroup::create([
-                'key' => $key,
-                'name' => $name,
-                'color' => $color,
-                'description' => $description
-            ]);
+            $newGroup = static::add($key, $name, $color, $description);
 
             $col->add($newGroup);
         }
@@ -88,11 +83,16 @@ class UserGroupHandler{
      * Truncates the whole UserGroup table.
      * DANGEROUS!
      *
-     * @return void
+     * @return int Deleted Items
      */
-    public static function clear()
+    public static function clear():int
     {
-        return UserGroup::truncate();
+        $count = 0;
+        foreach(UserGroup::all() as $ug){
+            $ug->delete();
+            $count++;
+        }
+        return $count;
     }
 
     /**
