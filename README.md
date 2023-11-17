@@ -29,5 +29,17 @@ php artisan vendor:publish --tag="livecontrols.groups.config"
 2) Open /config/livecontrols_groups.php
 3) Change line "usergroups_admins" to an array of UserGroup keys
 
+#### Autogenerate groups
+1) Run in console:
+```
+php artisan vendor:publish --tag="livecontrols.groups.config"
+```
+2) Open /config/livecontrols_groups.php
+3) Change line "usergroups_to_generate" to an array of UserGroups (See file for more informations)
+4) Run in console:
+```
+php artisan livecontrols:creategroups
+```
+
 ## Usage
 Todo

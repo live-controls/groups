@@ -7,6 +7,7 @@ use LiveControls\Groups\Console\AddUserToGroupCommand;
 use LiveControls\Groups\Console\RemoveUserFromGroupCommand;
 use LiveControls\Groups\Http\Middleware\CheckUserGroup;
 use Illuminate\Support\ServiceProvider;
+use LiveControls\Groups\Console\CreateUserGroupsCommand;
 
 class GroupsServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,7 @@ class GroupsServiceProvider extends ServiceProvider
         AddUserGroupCommand::class,
         AddUserToGroupCommand::class,
         RemoveUserFromGroupCommand::class,
+        CreateUserGroupsCommand::class,
       ]);
       
       $this->publishes([
