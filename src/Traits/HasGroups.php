@@ -99,4 +99,14 @@ trait HasGroups{
         }
         return true;
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->inGroups(config('livecontrols_groups.usergroups_admins', []));
+    }
+
+    public function isNotAdmin(): bool
+    {
+        return !$this->isAdmin();
+    }
 }
