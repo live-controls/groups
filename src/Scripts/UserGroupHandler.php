@@ -16,7 +16,7 @@ class UserGroupHandler{
      * @param string|null $description The description of the UserGroup
      * @return UserGroup|null
      */
-    public static function add(string $key, ?string $name = null, ?string $color = null, ?string $darmodeColor, ?string $description = null): UserGroup|null
+    public static function add(string $key, ?string $name = null, ?string $color = null, ?string $darmodeColor = null, ?string $description = null): UserGroup|null
     {
         return UserGroup::create([
             'key' => $key,
@@ -62,7 +62,7 @@ class UserGroupHandler{
         return $col;
     }
 
-    public static function edit(string $key, ?string $name = null, ?string $color = null, ?string $darkmodeColor, ?string $description = null)
+    public static function edit(string $key, ?string $name = null, ?string $color = null, ?string $darkmodeColor = null, ?string $description = null)
     {
         if(!static::exists($key)){
             throw new Exception("UserGroup with key '".$key."' does not exist!");
