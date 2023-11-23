@@ -123,7 +123,7 @@ class UserGroupHandler{
         if(!static::exists($key)){
             throw new Exception("UserGroup with key '".$key."' does not exist!");
         }
-        $group = UserGroup::where('key', '=', $key);
+        $group = UserGroup::where('key', '=', $key)->first();
         return $darkmode && !is_null($group->darkmode_color) ? $group->darkmode_color : $group->color;
     }
 }
