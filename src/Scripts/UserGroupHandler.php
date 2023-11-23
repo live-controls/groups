@@ -16,12 +16,13 @@ class UserGroupHandler{
      * @param string|null $description The description of the UserGroup
      * @return UserGroup|null
      */
-    public static function add(string $key, ?string $name = null, ?string $color = null, ?string $description = null): UserGroup|null
+    public static function add(string $key, ?string $name = null, ?string $color = null, ?string $darmodeColor, ?string $description = null): UserGroup|null
     {
         return UserGroup::create([
             'key' => $key,
             'name' => is_null($name) ? ucfirst($key) : $name,
             'color' => $color,
+            'darkmode_color' => $darmodeColor,
             'description' => $description
         ]);
     }
@@ -45,27 +46,29 @@ class UserGroupHandler{
                 $key = $group;
                 $name = ucfirst($key);
                 $color = null;
+                $darkmodeColor = null;
                 $description = null;
             }else{
                 $key = $group["key"];
                 $name = array_key_exists("name", $group) ? $group["name"] : ucfirst($key);
                 $color = array_key_exists("color", $group) ? $group["color"] : null;
+                $darmodeColor = array_key_exists("darkmodeColor", $group) ? $group["darkmodeColor"] : null;
                 $description = array_key_exists("description", $group) ? $group["description"] : null;
             }
-            $newGroup = static::add($key, $name, $color, $description);
+            $newGroup = static::add($key, $name, $color, $darmodeColor, $description);
 
             $col->add($newGroup);
         }
         return $col;
     }
 
-    public static function edit(string $key, ?string $name = null, ?string $color = null, ?string $description = null)
+    public static function edit(string $key, ?string $name = null, ?string $color = null, ?string $darkmodeColor, ?string $description = null)
     {
         if(!static::exists($key)){
             throw new Exception("UserGroup with key '".$key."' does not exist!");
         }
         static::remove($key);
-        static::add($key, $name, $color, $description);
+        static::add($key, $name, $color, $darkmodeColor, $description);
     }
 
     /**
