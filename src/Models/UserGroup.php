@@ -17,7 +17,8 @@ class UserGroup extends Model{
         'name',
         'key',
         'description',
-        'color'
+        'color',
+        'darkmode_color'
     ];
     
     public function users(): BelongsToMany
