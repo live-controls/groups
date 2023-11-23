@@ -40,6 +40,11 @@ trait HasGroups{
         return true;
     }
 
+    public function clearGroups(): bool
+    {
+        return $this->groups()->detach() > 0;
+    }
+
     public function notInGroup(string $key): bool
     {
         foreach($this->groups as $group){
