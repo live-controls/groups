@@ -52,10 +52,10 @@ class UserGroupHandler{
                 $key = $group["key"];
                 $name = array_key_exists("name", $group) ? $group["name"] : ucfirst($key);
                 $color = array_key_exists("color", $group) ? $group["color"] : null;
-                $darmodeColor = array_key_exists("darkmodeColor", $group) ? $group["darkmodeColor"] : null;
+                $darkmodeColor = array_key_exists("darkmodeColor", $group) ? $group["darkmodeColor"] : null;
                 $description = array_key_exists("description", $group) ? $group["description"] : null;
             }
-            $newGroup = static::add($key, $name, $color, $darmodeColor, $description);
+            $newGroup = static::add($key, $name, $color, $darkmodeColor, $description);
 
             $col->add($newGroup);
         }
