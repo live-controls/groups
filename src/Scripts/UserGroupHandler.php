@@ -76,6 +76,9 @@ class UserGroupHandler{
      */
     public static function remove(string $key): bool
     {
+        if(!static::exists($key)){
+            throw new Exception("UserGroup with key '".$key."' does not exist!");
+        }
         return UserGroup::where('key', '=', $key)->delete();
     }
 
@@ -104,5 +107,20 @@ class UserGroupHandler{
     public static function exists(string $key): bool
     {
         return UserGroup::where('key', '=', $key)->exists();
+    }
+
+    /**
+     * Returns the color
+     *
+     * @param string $key
+     * @return string
+     */
+    public static function color(string $key, bool $darkmode = false): string
+    {
+        if(!static::exists($key)){
+            throw new Exception("UserGroup with key '".$key."' does not exist!");
+        }
+        $group = UserGroup::where('key', '=', $key);
+        return $darkmode && !is_null($group->darkmode_color) ? $group->darkmode_color : $group->color;
     }
 }
